@@ -2,10 +2,15 @@ import differenceInCalendarDays from "https://deno.land/x/date_fns/differenceInC
 import { moment } from "https://deno.land/x/moment/moment.ts";
 
 /**
- * Returns the number of days from today until a given future date
+ * Returns the number of days from today daysUntil a given future date
+ *
+ * Usage:
+ *   # To get the days until Christmas 2026
+ *   daysUntil "2026.12.25"
+ *
  * @param targetDate
  */
-function until(targetDate: string): number {
+function daysUntil(targetDate: string): number {
   // TODO refactor to only use moment
   const targetDateObj = moment(targetDate, ["YYYYMMDD", "MMDDYYYY"], false);
   const today: Date = new Date();
@@ -17,7 +22,7 @@ function until(targetDate: string): number {
 const input: string = Deno.args[0];
 
 if (input) {
-  console.log(`${until(input)} days until ${input}`);
+  console.log(`${daysUntil(input)} days until ${input}`);
 } else {
   console.log('You need to enter a date, e.g. "2025-03-12"');
 }
